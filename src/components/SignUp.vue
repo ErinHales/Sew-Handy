@@ -1,63 +1,56 @@
 <template>
 <transition name="fade">
   <div class="signup">
-    <NavBar title="Sign Up" />
     <transition name="fade">
-      <Modal v-if="modal" :name="name" :username="username" :email="email" :signup="signup" :popUp="popUp" />
+      <Modal v-if="modal" :name="name" :email="email" :signup="signup" :popUp="popUp" />
     </transition>
     <v-form action="" @submit.prevent="popUp" lazy-validation>
+      <img src="../../assets/Horizontal-Logo.png" alt="" class="logo">
       <v-text-field
-        color="#00BFFE"
+        color="black"
         type="text"
         v-model="name"
         label="Name"
-        counter="50"
+        solo
         :rules="[rules.required]"
         required></v-text-field>
       <v-text-field
-        color="#00BFFE"
-        type="text"
-        v-model="username"
-        label="Username"
-        counter="50"
-        :rules="[rules.required]"
-        required></v-text-field>
-      <v-text-field
-        color="#00BFFE"
+        color="black"
         type="text"
         v-model="email"
         label="Email"
-        counter="50"
+        solo
         :rules="[rules.required, rules.email]"
         required
         onChange="(e) => checkEmail(e.target.value)"></v-text-field>
       <v-text-field
-        color="#00BFFE"
+        color="black"
         type="text"
         v-model="password1"
         label="Password"
-        counter="40"
+        counter="8"
+        solo
         :rules="[rules.required, rules.min]"
-        hint="At least 12 characters"
+        hint="At least 8 characters"
         required></v-text-field>
       <v-text-field
-        color="#00BFFE"
+        color="black"
         type="text"
         v-model="password2"
         label="Confirm Password"
-        counter="40"
+        counter="8"
+        solo
         :rules="[rules.required, rules.passwordMatch]"
-        hint="At least 12 characters"
+        hint="At least 8 characters"
         required></v-text-field>
+      <v-btn color="#F86C26" type="submit" class="submit">Create Account</v-btn>
       <h5>Already have an account? <router-link to="/" class="link">Login<font-awesome-icon icon="angle-double-right" class="arrow" /></router-link></h5>
-      <v-btn block color="#00BFFE" type="submit" class="submit">Create Account</v-btn>
     </v-form>
   </div>
 </transition>
 </template>
 
 <script>
-import NavBar from './NavBar'
 import Modal from './Modal'
 import axios from 'axios'
 import { debounce } from 'lodash'
@@ -67,7 +60,6 @@ export default {
   data () {
     return {
       name: '',
-      username: '',
       email: '',
       password1: '',
       password2: '',
@@ -75,7 +67,7 @@ export default {
       validEmail: false,
       rules: {
         required: value => !!value || 'Required.',
-        min: v => v.length >= 12 || 'Min 12 characters',
+        min: v => v.length >= 8 || 'Min 8 characters',
         passwordMatch: v => v === this.password1 || 'Passwords do not match',
         email: v => this.validate() || 'Invalid Email'
         // unique: v => this.checkEmail() || 'Email must be unique'
@@ -93,7 +85,6 @@ export default {
     }, 500)
   },
   components: {
-    NavBar,
     Modal
   },
   methods: {
@@ -108,7 +99,7 @@ export default {
         this.name !== '' &&
         this.username !== '' &&
         this.validEmail === true &&
-        this.password1.length >= 12 &&
+        this.password1.length >= 8 &&
         this.password1 === this.password2
       ) {
         axios.post('/api/newuser', userData).then(response => {
@@ -129,7 +120,7 @@ export default {
         this.name !== '' &&
         this.username !== '' &&
         this.validEmail === true &&
-        this.password1.length >= 12 &&
+        this.password1.length >= 8 &&
         this.password1 === this.password2
       ) {
         this.modal = !this.modal
@@ -152,31 +143,38 @@ export default {
 <style scoped>
 .signup {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: #025670;
+  justify-content: center;
+  background-color: #F7F7F0;
   height: 100vh;
+}
+.logo {
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 20px;
 }
 .v-form {
   display: flex;
   flex-direction: column;
-  width: 40vw;
-  height: 80vh;
-  justify-content: center;
+  width: 90%;
+  max-width: 600px;
+  justify-content: space-around;
   align-items: center;
-  background-color: white;
   overflow: hidden;
   border-radius: 5px;
-  padding-top: 10px;
+  /* padding: 0px 10px 10px 10px; */
 }
 .submit {
-  position: relative;
-  top: 6px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 350px;
+  height: 75px !important;
+  font-size: 20px;
   color: white;
 }
 .link {
   color: white;
-  background-color: #FFA202;
+  background-color: #2daca7;
   padding: 5px;
   text-decoration: none;
   border-radius: 3px;
@@ -185,22 +183,17 @@ export default {
   margin: 0px 5px;
 }
 .v-input {
-  width: 60%;
-  margin-bottom: -30px;
+  width: 100%;
+  max-width: 300px;
+  flex: 0 1 auto;
 }
-@media (max-width: 1000px) {
-  .v-form {
-    width: 60%;
+@media (max-width: 450px) {
+  .form {
+    width: 100%;
+    height: 100%;
   }
-}
-@media (max-width: 700px) {
-  .v-form {
-    width: 80%;
-  }
-}
-@media (max-width: 500px) {
-  .v-input {
-    width: 80%;
+  .submit {
+    font-size: 16px;
   }
 }
 </style>

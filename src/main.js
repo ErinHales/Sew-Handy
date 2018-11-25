@@ -12,8 +12,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#C4C4C4', // #E53935
-    secondary: '#0a8f70' // #FFCDD2
+    primary: '#F7F7F0',
+    secondary: '#36CAC5',
+    accent: '#F86C26'
   }
 })
 

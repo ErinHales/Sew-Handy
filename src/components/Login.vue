@@ -1,28 +1,29 @@
 <template>
 <transition name="fade">
   <div class="login">
-    <NavBar title="LOG IN" />
+    <!-- <NavBar title="LOG IN" /> -->
     <v-form action="" @submit.prevent="login" class="form">
+      <img src="../../assets/Horizontal-Logo.png" alt="" class="logo">
       <v-text-field
-        color="#00BFFE"
+        color="black"
         type="text"
         v-model="username"
         label="Email"
-        counter="50"
         class="input"
+        solo
         :rules="[() => !!username || 'This field is required']"
         required></v-text-field>
       <v-text-field
-        color="#00BFFE"
+        color="black"
         type="text"
         v-model="password"
         label="Password"
-        counter="50"
         class="input"
+        solo
         :rules="[() => !!password || 'This field is required']"
         required></v-text-field>
-        <h5>Don't have an account? <router-link to="/signup" class="link">Sign Up<font-awesome-icon icon="angle-double-right" class="arrow" /></router-link></h5>
-      <v-btn block type="submit" color="#00BFFE" class="submit">LOG IN</v-btn>
+      <v-btn type="submit" color="#F86C26" class="submit">LOG IN</v-btn>
+      <h5>Don't have an account? <router-link to="/signup" class="link">Sign Up<font-awesome-icon icon="angle-double-right" class="arrow" /></router-link></h5>
     </v-form>
   </div>
 </transition>
@@ -72,32 +73,39 @@ export default {
 
 .login {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  background-color: #025670;
+  justify-content: center;
+  background-color: #F7F7F0;
   height: 100vh;
+}
+.logo {
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 20px;
 }
 .v-form {
   display: flex;
   flex-direction: column;
-  width: 40vw;
-  height: 60vh;
-  justify-content: center;
+  width: 90vw;
+  max-width: 600px;
+  height: 100%;
+  max-height: 650px;
+  justify-content: space-around;
   align-items: center;
-  background-color: white;
-  margin-top: 50px;
   overflow: hidden;
   border-radius: 5px;
-  padding-top: 50px;
+  padding: 0px 10px 10px 10px;
 }
 .submit {
-  position: relative;
-  top: 10px;
+  width: 100%;
+  max-width: 350px;
+  height: 75px;
+  font-size: 20px;
   color: white;
 }
 .link {
   color: white;
-  background-color: #FFA202;
+  background-color: #2daca7;
   padding: 5px;
   text-decoration: none;
   border-radius: 3px;
@@ -106,21 +114,17 @@ export default {
   margin: 0px 5px;
 }
 .v-input {
-  width: 60%;
+  width: 100%;
+  max-width: 300px;
+  flex: 0 1 auto;
 }
-@media (max-width: 1000px) {
+@media (max-width: 450px) {
   .v-form {
-    width: 60%;
+    width: 100%;
+    height: 100%;
   }
-}
-@media (max-width: 700px) {
-  .v-form {
-    width: 80%;
-  }
-}
-@media (max-width: 500px) {
-  .v-input {
-    width: 80%;
+  .submit {
+    font-size: 16px;
   }
 }
 </style>

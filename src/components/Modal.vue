@@ -3,12 +3,11 @@
     <div>
       <h3>Account Information</h3>
       <p>Name: {{name}}</p>
-      <p>Username: {{username}}</p>
       <p>Email: {{email}}</p>
       <h3>Is this information correct?</h3>
       <div>
-        <v-btn block color="#FFA202" @click="signup">Confirm</v-btn>
-        <v-btn block color="#FFA202" @click="popUp">Nope</v-btn>
+        <v-btn block color="#F86C26" @click="signup">Confirm</v-btn>
+        <v-btn block color="#F86C26" @click="popUp">Nope</v-btn>
       </div>
     </div>
   </div>
@@ -17,7 +16,7 @@
 <script>
 export default {
   name: 'Modal',
-  props: ['name', 'username', 'email', 'signup', 'popUp']
+  props: ['name', 'email', 'signup', 'popUp']
 }
 </script>
 
@@ -35,19 +34,13 @@ export default {
   z-index: 1000;
 }
 .modal > div {
-  width: 43vw;
-  background-color: white;
+  width: 85vw;
+  max-width: 450px;
+  background-color: #F7F7F0;
   padding: 50px;
   text-align: center;
 }
-@media (max-width: 1000px) {
-  .modal > div {
-    width: 55%;
-  }
-}
-@media (max-width: 700px) {
-  .modal > div {
-    width: 85%;
-  }
+.modal h3 {
+  margin-bottom: 15px;
 }
 </style>
