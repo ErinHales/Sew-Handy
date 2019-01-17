@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import SignUp from '@/components/SignUp'
 import Home from '@/components/Home/Index'
+import Desktop from '@/components/Towel_of_the_Month/Desktop'
 // import axios from 'axios'
 
 Vue.use(Router)
@@ -25,6 +26,12 @@ let router = new Router({
       path: '/home',
       name: 'Home',
       component: Home,
+      meta: { requiresAuth: false }
+    },
+    {
+      path: '/towel_of_the_month',
+      name: 'Desktop',
+      component: Desktop,
       meta: { requiresAuth: false }
     }
   ]

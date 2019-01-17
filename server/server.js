@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 // app.use(express.static(`${__dirname}/../dist`))
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
+// const {SERVER_PORT, SESSION_SECRET} = process.env;
 
 massive(CONNECTION_STRING).then(function(db) {
   app.set("db", db);

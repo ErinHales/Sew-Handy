@@ -75,7 +75,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F7F7F0;
+  background-color: var(--white);
   height: 100vh;
 }
 .logo {

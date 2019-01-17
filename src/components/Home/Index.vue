@@ -1,16 +1,16 @@
 <template>
-  <v-container>
-    <Home-Desktop class="desktop"></Home-Desktop>
-    <Home-Mobile class="mobile"></Home-Mobile>
-  </v-container>
+  <div>
+    <home-desktop class="desktop"></home-desktop>
+    <home-mobile class="mobile"></home-mobile>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    HomeDesktop: import('./Home-Desktop.vue'),
-    HomeMobile: import('./Home-Mobile.vue')
+    HomeDesktop: () => import(/* webpackChunkName: 'Home-Desktop' */ './Home-Desktop.vue'),
+    HomeMobile: () => import(/* webpackChunkName: 'Home-Mobile' */ './Home-Mobile.vue')
   }
 }
 </script>
@@ -19,13 +19,12 @@ export default {
 .mobile {
   display: none;
 }
-
 @media (max-width: 450px) {
-  .mobile {
-    display: block;
-  }
   .desktop {
     display: none;
+  }
+  .mobile {
+    display: block;
   }
 }
 </style>

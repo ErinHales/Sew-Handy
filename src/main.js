@@ -9,6 +9,7 @@ import 'vuetify/dist/vuetify.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.use(Vuetify, {
   theme: {

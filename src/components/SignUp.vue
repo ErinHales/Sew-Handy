@@ -25,7 +25,7 @@
         onChange="(e) => checkEmail(e.target.value)"></v-text-field>
       <v-text-field
         color="black"
-        type="text"
+        type="password"
         v-model="password1"
         label="Password"
         counter="8"
@@ -35,7 +35,7 @@
         required></v-text-field>
       <v-text-field
         color="black"
-        type="text"
+        type="password"
         v-model="password2"
         label="Confirm Password"
         counter="8"
@@ -145,7 +145,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F7F7F0;
+  background-color: var(--white);
   height: 100vh;
 }
 .logo {
